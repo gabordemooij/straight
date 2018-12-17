@@ -1,0 +1,3 @@
+<?php
+
+dict( ['setting' => 'On'] );
