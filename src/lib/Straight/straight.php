@@ -231,3 +231,39 @@ function dict( $words, $params = array() ) {
 	/* if no translation available, return the word */
 	return vsprintf( $word, $params );
 }
+
+/**
+ * The qry() function takes a query, parameters and a retrieval
+ * function and returns an array with the results.
+ *
+ * The first time you call the qry() function you should pass
+ * a PDO instance like this:
+ *
+ * qry( new \PDO($dsn, $user, $pass, $opts) );
+ *
+ * This will initiate the database. Instead of a PDO object you can
+ * also pass a PDO-compatible object.
+ *
+ * To run a query:
+ *
+ * qry( 'SELECT * FROM book WHERE id = ?', [ $id ] );
+ *
+ * By default the qry() function attempts to invoke
+ * fetchAll() on the resulting object. If you prefer
+ * something else you can provide a callable as the third
+ * parameter.
+ *
+ * @param string|PDO $query     SQL query to process (or PDO object)
+ * @param array      $array     parameters to bind
+ * @param callable   $retrieval retrieval method (default is 'fetchAll')
+ *
+ * @return mixed (depends on retrieval)
+ */
+function qry( $query, $params = null, $retrieval = 'fetchAll' ) {
+		static $pdo = null;
+		if ( is_null( $pdo ) ) return $pdo = $query;
+		if (!$params) return $pdo->query($query)->$retrieval();
+		$s = $pdo->prepare($query);
+		$s->execute($params);
+		return $s->$retrieval();
+}
