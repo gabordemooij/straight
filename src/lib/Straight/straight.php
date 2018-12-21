@@ -239,14 +239,14 @@ function dict( $words, $params = array() ) {
  * The first time you call the qry() function you should pass
  * a PDO instance like this:
  *
- * qry( new \PDO($dsn, $user, $pass, $opts) );
+ * query( new \PDO($dsn, $user, $pass, $opts) );
  *
  * This will initiate the database. Instead of a PDO object you can
  * also pass a PDO-compatible object.
  *
  * To run a query:
  *
- * qry( 'SELECT * FROM book WHERE id = ?', [ $id ] );
+ * query( 'SELECT * FROM book WHERE id = ?', [ $id ] );
  *
  * By default the qry() function attempts to invoke
  * fetchAll() on the resulting object. If you prefer
@@ -259,7 +259,7 @@ function dict( $words, $params = array() ) {
  *
  * @return mixed (depends on retrieval)
  */
-function qry( $query, $params = null, $retrieval = 'fetchAll' ) {
+function query( $query, $params = null, $retrieval = 'fetchAll' ) {
 		static $pdo = null;
 		if ( is_null( $pdo ) ) return $pdo = $query;
 		if (!$params) return $pdo->query($query)->$retrieval();
