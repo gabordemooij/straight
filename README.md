@@ -1,6 +1,6 @@
 # straight
 
-The Straight from The Hague Framework
+The Straight Framework
 
 An advanced, functional PHP micro framework for minimalists.
 
