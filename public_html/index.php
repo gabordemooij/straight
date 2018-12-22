@@ -1,10 +1,16 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+/**
+ * Part of The Straight Framework.
+ */
 
-//define
+/**
+ * PATH definitions.
+ *
+ * Recommendation: put your system files out of the
+ * web root folder (public_html).
+ * ------------------------------------------------
+ */
 define( 'PATH_SYSTEM', '..' );
 define( 'PATH_SRC',    PATH_SYSTEM .  '/src'     );
 define( 'PATH_DATA',   PATH_SYSTEM .  '/data'    );
@@ -17,4 +23,7 @@ define( 'PATH_MODEL',  PATH_APP    .  '/object'  );
 define( 'PATH_OBJECT', PATH_APP    .  '/object'  );
 define( 'PATH_SCRIPT', PATH_APP    .  '/script'  );
 
+/**
+ * Dispatch request to the routes script.
+ */
 require( PATH_SCRIPT . '/routes.php' );
