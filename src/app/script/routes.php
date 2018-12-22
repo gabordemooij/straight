@@ -1,6 +1,10 @@
 <?php
 
-/* Load the Straight from The Hague Framework Here... */
+/**
+ * Part of The Straight Framework.
+ */
+
+/* load the Straight Framework  */
 require PATH_LIB . '/Straight/straight.php';
 
 /* English dictionary */
@@ -13,8 +17,10 @@ function __do_get() {
 	view( 'welcome', [ 'greeting' => dict('welcome') ] );
 }
 
-/* */
+/* Handle requests */
 if (!fmap( [ ], '__do' )) {
+
+	/* No request handler has been found... */
 	http_response_code(404);
 	die('wut?');
 }
