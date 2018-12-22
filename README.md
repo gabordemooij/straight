@@ -12,3 +12,4 @@ The framework consists of:
 - a function for retrieving and processing both settings as well as text
 - a view function
 - an utf8 user data escape function
+- a basic query function
