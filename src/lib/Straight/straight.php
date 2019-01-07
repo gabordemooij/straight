@@ -110,13 +110,15 @@ function fmap( $rewrite_rules = [], $prefix = '__endpoint' ) {
  * < (less than)        &lt;
  * > (greater than)     &gt;
  *
- * @param string $data
+ * @param string  $data       data to be escaped and encoded for UTF-8 output
+ * @param boolean $assumeUTF8 if TRUE skips UTF-8 encoding (better performance)
  *
  * @return string
  */
-function esc( $data ) {
+function esc( $data, $assumeUTF8 = false ) {
 
 	/* encode everything in UTF-8 */
+	if ( !$assumeUTF8 )
 	$data = iconv("UTF-8","UTF-8//IGNORE", $data);
 
 	/* convert all special characters for HTML document control for UTF-8 */
