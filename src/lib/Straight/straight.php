@@ -193,11 +193,13 @@ function view( $document, $vars = array() ) {
  * }
  * }]);
  * echo dict('I have %d apples', [1]);
+ * 
+ * You can also use dict() for DI.
  *
  * @param string       $word word to translate
  * @param string|array translation or parameters
  *
- * @return string
+ * @return mixed
  */
 function dict( $words, $params = array() ) {
 
@@ -224,6 +226,9 @@ function dict( $words, $params = array() ) {
 		if ( is_callable( $translation ) ) {
 			$translation = call_user_func_array( $translation, $params );
 		}
+		
+		/* if translation is something other than string return it (DI)*/
+		if (!is_string($translation)) return $translation;
 		
 		/* return parameterized translation */
 		return vsprintf( $translation, $params );
@@ -263,7 +268,7 @@ function dict( $words, $params = array() ) {
 function query( $query, $params = null, $retrieval = 'fetchAll' ) {
 		static $pdo = null;
 		if ( is_null( $pdo ) ) return $pdo = $query;
-		if (!$params) return $pdo->query($query)->$retrieval();
+		if ( is_null( $params ) ) return $pdo->query($query)->$retrieval();
 		$s = $pdo->prepare($query);
 		$s->execute($params);
 		return $s->$retrieval();
