@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>Straight from The Hague</title>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 </head>
 <body>
 	<article>
