@@ -14,6 +14,3 @@ The framework consists of:
 - an utf8 user data escape function
 - a basic query function
 
-The Straight Framework has nothing to do with the Nashville pamflet but happens to
-be released on the same date. Subsequent releases will be named after other Tennessee cities.
-The name of the framework refers to the fact that it is very straightforward.
