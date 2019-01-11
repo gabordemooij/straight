@@ -1,4 +1,4 @@
-# The Straight Framework v1.0 Nashville
+# The Straight Framework v1.1 'Brentwood'
 
 The Straight Framework
 
