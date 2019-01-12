@@ -2,7 +2,7 @@
 
 The Straight Framework
 
-An advanced, functional PHP micro framework for minimalists.
+An advanced, NO-NONSENSE, functional PHP micro framework for minimalists.
 
 The framework consists of:
 
