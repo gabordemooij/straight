@@ -156,7 +156,7 @@ function view( $document, $vars = array() ) {
 	/* JSON out */
 	if ( $document === '@json' ) {
 		header('Content-Type: application/json');
-		die( json_encode( $vars ) );
+		echo json_encode( $vars );
 	}
 
 	/* craft a path from the document name */
