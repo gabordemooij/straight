@@ -144,10 +144,20 @@ function esc( $data, $assumeUTF8 = false ) {
  * This function does not attempt to modify output buffering so
  * your buffer settings will remain untouched.
  *
+ * If $document equals '@json' then the data in $vars
+ * will be json encoded and send to the client using an
+ * application/json header.
+ *
  * @param string $document document
  * @param array  $vars     variables to extract to symbol table
  */
 function view( $document, $vars = array() ) {
+
+	/* JSON out */
+	if ( $document === '@json' ) {
+		header('Content-Type: application/json');
+		die( json_encode( $vars ) );
+	}
 
 	/* craft a path from the document name */
 	$path = PATH_VIEW . "/{$document}.php";
