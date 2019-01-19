@@ -13,4 +13,5 @@ The framework consists of:
 - a view function
 - an utf8 user data escape function
 - a basic query function
+- a shortcut function for JSON output (jout)
 
