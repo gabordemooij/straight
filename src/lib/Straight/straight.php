@@ -144,21 +144,13 @@ function esc( $data, $assumeUTF8 = false ) {
  * This function does not attempt to modify output buffering so
  * your buffer settings will remain untouched.
  *
- * If $document equals '@json' then the data in $vars
- * will be json encoded and send to the client using an
- * application/json header.
+ * Usage:
+ * view( 'article', $data );
  *
  * @param string $document document
  * @param array  $vars     variables to extract to symbol table
  */
 function view( $document, $vars = array() ) {
-
-	/* JSON out */
-	if ( $document === '@json' ) {
-		header('Content-Type: application/json');
-		echo json_encode( $vars );
-		return;
-	}
 
 	/* craft a path from the document name */
 	$path = PATH_VIEW . "/{$document}.php";
@@ -168,6 +160,20 @@ function view( $document, $vars = array() ) {
 
 	/* require the template file */
 	require( $path );
+}
+
+/**
+* Echos the passed $data JSON encoded
+* with appropriate headers (application/json) and exits.
+*
+* Usage:
+* jout( ['message' => 'this is json'] );
+*
+* @param array $data data to jsonify and output
+*/
+function jout( $data ) {
+	header('Content-Type: application/json');
+	die( json_encode( $data ) );
 }
 
 /**
