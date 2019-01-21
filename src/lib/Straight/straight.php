@@ -325,3 +325,29 @@ function query( $query, $params = null, $retrieval = 'fetchAll' ) {
 		$s->execute($params);
 		return $s->$retrieval();
 }
+
+/**
+ * Basic test function. If you don't like unit test frameworks,
+ * this is probably the most basic test function possible.
+ *
+ * Usage:
+ *
+ * asrt( (1 + 1) , 2);
+ *
+ * @param mixed  $observed the observed value
+ * @param mixed  $expected the expected value
+ * @param string $note     note to display
+ *
+ * @return void
+ */
+function asrt( $observed, $expected, $note = null ) {
+	static $count = 0;
+	$count++;
+	if (!is_null($note)) echo "$note\n";
+	if ( $expected !== $observed ) {
+		echo 'FAIL';
+		debug_print_backtrace();
+		exit;
+	}
+	echo "[$count]";
+}
