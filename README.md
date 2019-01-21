@@ -1,4 +1,4 @@
-# The Straight Framework v1.1 'Brentwood'
+# The Straight Framework v1.2 'Franklin'
 
 The Straight Framework
 
@@ -14,4 +14,6 @@ The framework consists of:
 - an utf8 user data escape function
 - a basic query function
 - a shortcut function for JSON output (jout)
+- a function to output a file
+- a test function
 
