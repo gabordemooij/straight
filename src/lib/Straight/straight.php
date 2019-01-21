@@ -177,6 +177,41 @@ function jout( $data ) {
 }
 
 /**
+ * Reads the file indicated by the specified path and writes it to
+ * the output buffer, using the appropriate headers. If the file
+ * does not exist a 404 header will be send and the script will abort.
+ * Float() supports headers for jpg, jpeg, gif, png and pdf extension.
+ *
+ * @param string $path path to file to send to client
+ *
+ * @return void
+ */
+function flout( $path ) {
+	if (!file_exists($path)) {
+		header('HTTP/1.0 404 Not Found');
+		exit;
+	}
+	$ext = pathinfo( $path, PATHINFO_EXTENSION );
+	switch( $ext ) {
+		case 'jpg':
+		case 'jpeg':
+			header('Content-type: image/jpeg');
+			break;
+		case 'gif':
+			header('Content-type: image/gif');
+			break;
+		case 'png':
+			header('Content-type: image/png');
+			break;
+		case 'pdf':
+			header('Content-type: application/pdf');
+			break;
+	}
+	readfile( $path );
+	exit;
+}
+
+/**
  * The dict() function can be used for translation
  * and configuration.
  * Basically it just translates a word from one language into another.
