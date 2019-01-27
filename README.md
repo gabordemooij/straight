@@ -17,3 +17,9 @@ The framework consists of:
 - a function to output a file
 - a test function
 
+When deploying straight in a subfolder, one can edit the fmap call in routes.php to:
+
+```
+fmap( [ '/subfolder/' => '' ]...
+```
+
