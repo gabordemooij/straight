@@ -23,3 +23,7 @@ When deploying straight in a subfolder, one can edit the fmap call in routes.php
 fmap( [ '/subfolder/' => '' ]...
 ```
 
+Visit the website:
+https://gabordemooij.com/straight/
+
+
