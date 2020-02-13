@@ -173,7 +173,7 @@ function view( $document, $vars = array() ) {
 */
 function jout( $data ) {
 	header('Content-Type: application/json');
-	die( json_encode( $data ) );
+	die( json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
 }
 
 /**
