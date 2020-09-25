@@ -122,12 +122,28 @@ function esc( $data, $assumeUTF8 = false ) {
 	$data = iconv("UTF-8","UTF-8//IGNORE", $data);
 
 	/* convert all special characters for HTML document control for UTF-8 */
-	$data = htmlspecialchars( $data, ENT_QUOTES, 'UTF-8' );
+	$data = _esc( $data );
 
 	/* for old MSIE */
 	$data = str_replace( '`', '&#96;', $data );
 
 	return $data;
+}
+
+/**
+ * Escapes a string for use in a UTF-8 document.
+ *
+ * Same as esc() but does not recode to UTF8 so make sure your data is already
+ * valid UTF-8. Also skips encoding of backtick. This function
+ * offers better performance than esc( $data, false );.
+ *
+ * @param string  $data       data to be escaped and encoded for UTF-8 output
+ *
+ * @return string
+ */
+function _esc( $data ) {
+	/* convert all special characters for HTML document control for UTF-8 */
+	return htmlspecialchars( $data, ENT_QUOTES, 'UTF-8' );
 }
 
 /**
